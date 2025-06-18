@@ -60,9 +60,8 @@ medias
 ggplot(medias,aes(score_diff)) + geom_histogram(aes(fill=(abs(score_diff)<diff_muestra)))
 
 
-# p-valor de la diferencia observada:
-medias %>% filter(diff_muestra<=abs(score_diff)) %>%
-  nrow() / nrow(medias)
+# p-valor de la diferencia observada (cola derecha):
+mean(medias$score_diff >= diff_muestra)
 # RESULTADO: Rechazamos la hipótesis nula por ser p<0.05. Por tanto, tenemos evidencia estadística 
 # de que las puntuaciones de los dramas son distintos que las de las comedias. 
 
